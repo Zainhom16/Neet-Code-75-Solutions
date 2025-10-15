@@ -1,14 +1,14 @@
-class NodeList
-{
-  public int value;
-  NodeList next;
+// class NodeList
+// {
+//   public int value;
+//   NodeList next;
 
-  public NodeList(int val)
-  {
-    value = val;
-    next = null;
-  }
-}
+//   public NodeList(int val)
+//   {
+//     value = val;
+//     next = null;
+//   }
+// }
 
 // class LinkedQueue 
 // {
@@ -51,7 +51,7 @@ class NodeList
 
 //     return front.value;
 //   }
-  
+
 //   bool IsEmpty()
 //   {
 //     return front == null;
@@ -65,25 +65,55 @@ class NodeList
 //   private 
 // }
 
-class Stakc()
+// class Stakc()
+// {
+//   NodeList top;
+
+//   Stack()
+//   {
+//     top = null;
+//   }
+
+//   void Push(int value)
+//   {
+//     NodeList temp = new(value);
+//     temp.next = top;
+//     top = temp;
+//   }
+
+//   void Pop()
+//   {
+//     if (top == null) return;
+//     top = top.next;
+//   }
+// }
+
+class Node
 {
-  NodeList top;
+  public int value;
+  public Node left;
+  public Node right;
 
-  Stack()
+  public Node(int value)
   {
-    top = null;
+    this.value = value;
+    left = right = null;
   }
 
-  void Push(int value)
+
+  public BFS (Node x)
   {
-    NodeList temp = new(value);
-    temp.next = top;
-    top = temp;
-  }
-  
-  void Pop()
-  {
-    if (top == null) return;
-    top = top.next;
+    if (x == null) return;
+    Queue<Node> q= new();
+    q.Enqueue(x);
+
+    while (q.Count != 0)
+    {
+      Node front = q.Dequeue();
+      Console.WriteLine($"{front.value}");
+      if (front.left!=null) q.Enqueue(front.left);
+      if (front.right!=null) q.Enqueue(front.right);
+    } 
   }
 }
+
